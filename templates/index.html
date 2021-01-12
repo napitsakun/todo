@@ -1,0 +1,98 @@
+{% extends 'base.html' %}
+{% load static %}
+<!-- {% load temp_filters %} -->
+
+{% block title %} Tasks/Todo {% endblock %}
+
+{% block body-class %} index-body {% endblock %}
+
+{% block content %}
+	<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLabel">Add a To Do</h5>
+					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+				</div>
+				<div class="modal-body">
+					<form method="POST" action="{% url 'add' %}">
+						{% csrf_token %}
+						<textarea name="todo" class="form-control" placeholder="Write Here..." rows="10" cols="30"></textarea>
+						<div class="modal-footer">
+							<button type="submit" class="btn btn-primary add-todo">&#10010;&nbsp;Add</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="container">
+		<div class="todo-title">
+			<h3>My To-Do List</h3>
+			<hr>
+		</div>
+		{% for item in tasks %}
+		<div class="row">
+			<div class="col-lg-10 mx-auto">
+				<div class="list-group">
+					<div href="#" class="list-group-item list-group-item-action flex-column align-items-start mt-3">
+						<div class="d-flex w-100 justify-content-between">
+							<div class="col-1">
+								<button type="button" item-id="{{ item.id }}" class="completed-task">&#10004;</button>
+							</div>
+
+							<div class="col-9">
+								<p class="mb-1">{{ item.task|linebreaks }}</p>
+							</div>
+
+							<div class="col-1">
+								<a href="{% url 'update' item.id %}"><button type="button" item-id="{{ item.id }}" class="edit-task" data-bs-toggle="modal" data-bs-target="#editModal">&#9998;</button></a>
+							</div>
+
+							<div class="col-1">
+								<button type="button"><a href="{% url 'delete' item.id %}">&#x2716;</a></button>
+							</div>
+
+						</div>
+						<!-- <small>{{ item.created_at|date }}</small><br> -->
+						<small>{{ item.updated_at }}</small>
+					</div>
+				</div>
+			</div>
+		</div>
+		{% endfor %}
+
+		<nav aria-label="...">
+			{% if page_obj.has_other_pages %}
+				<ul class="pagination">
+					{% if page_obj.has_previous %}
+						<li class="page-item">
+							<a class="page-link" href="?page={{ page_obj.previous_page_number }}">&laquo;</a>
+						</li>
+					{% else %}
+						<li class="page-item disabled"><span class="page-link">&laquo;</span></li>
+					{% endif %}
+
+					{% for i in page_obj.paginator.page_range %}
+						{% if page_obj.number == i %}
+							<li class="page-item active"><span class="page-link">{{ i }}</span></li>
+						{% else %}
+							<li class="page-item">
+								<a class="page-link" href="?page={{ i }}">{{ i }}</a>
+							</li>
+						{% endif %}
+					{% endfor %}
+
+					{% if page_obj.has_next %}
+						<li class="page-item">
+							<a class="page-link" href="?page={{ page_obj.next_page_number }}">&raquo;</a>
+						</li>
+					{% else %}
+						<li class="page-item disabled"><span class="page-link">&raquo;</span></li>
+					{% endif %}
+				</ul>
+			{% endif %}
+		</nav>
+	</div>
+{% endblock %}

@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} Update Task/Todo {% endblock %}
+
+{% block body-class %} index-body {% endblock %}
+
+{% block content %}
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="editModalLabel">Edit</h5>
+				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+			</div>
+			<div class="modal-body">
+				<form method="POST" action="{% url 'update' object.id %}">
+					{% csrf_token %}
+					{{ form.task }}
+					<div class="modal-footer">
+						<div class="button">
+							<button type="submit" class="btn btn-primary add-todo">Update</button>
+							<a href="{% url 'index' %}"><button type="button" class="btn btn-primary reset">Cancel</button></a>
+							<a href="{% url 'delete' object.id %}"><button type="button" class="btn btn-danger">Delete</button></a>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+{% endblock %}

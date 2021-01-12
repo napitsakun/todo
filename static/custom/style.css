@@ -1,0 +1,154 @@
+body {
+    font-family: cursive;
+    height: 100%;
+    margin: 0;
+}
+form {
+    padding: 20px;
+}
+label {
+    display: inline-block;
+    color: white;
+    padding: 10px 0px 10px 0px;
+}
+input.form-control {
+    border-radius: 0;
+    box-shadow: 3px 3px 10px #2a2529;
+    border: none;
+}
+.button {
+    text-align: center;
+}
+.btn.btn-primary, .btn.btn-danger {
+    background-color: #fff;
+    border: 0;
+    border-radius: 45px;
+    color: #000;
+    width: 150px;
+    margin-top: 20px;
+    box-shadow: 3px 3px 5px #2a2529;
+}
+.btn.btn-primary:hover {
+    background: linear-gradient(100deg, #43b58e, #3937bf 100%);
+    border-color: #0b628a;
+    color: white;
+}
+.btn.btn-danger {
+    background-color: #b91919;
+    color: #fff;
+}
+
+/*login, register*/
+.login-body, .register-body {
+    background-image: url('../image/notebook-1280538_1920.jpg');
+    background-size: cover;
+}
+.login.card, .register.card, .change-pw.card {
+    border: none;
+    border-radius: 0px;
+    background: linear-gradient(200deg, #43b58e, #3937bf 130%);
+    top: 40%;
+    box-shadow: 10px 10px 10px #2a2529;
+}
+.login .card-title, .register .card-title, .change-pw .card-title {
+    text-align: center;
+    margin: 20px;
+    color: #fff;
+    border-bottom: 1px solid #fff;
+}
+/*login, register*/
+
+/*register*/
+.register-body {
+    background-image: url('../image/old-1130743_1920.jpg');
+}
+.register.card {
+    background: linear-gradient(150deg, #0b628a, #43b58e 100%);
+    box-shadow: 10px 10px 10px #4b3939;
+    top: 0;
+    margin: 10px;
+}
+/*register*/
+
+
+/*index*/
+.index-body::before, .change-pw::before {
+    background: url(../image/write-593333_1920.jpg) no-repeat center center fixed;
+    content: '';
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    position:absolute;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    -webkit-filter: blur(5px);
+    -moz-filter: blur(5px);
+    -o-filter: blur(5px);
+    -ms-filter: blur(5px);
+    filter: blur(5px);
+}
+.navbar-light .navbar-brand {
+    color: white;
+}
+.btn.btn-primary.nav-link.dropdown-toggle {
+    margin-left: 10px;
+}
+.btn.btn-primary.nav-link.dropdown-toggle:hover {
+    color: white;
+}
+.todo-title {
+    text-align: center;
+    color: white;
+    margin: 15px;
+}
+.list-group-item.list-group-item-action.flex-column.align-items-start.mt-3 {
+    color: white;
+    background: linear-gradient(2deg, #21b9a4, #000000e3);
+}
+.pagination {
+    float: right;
+    margin-top: 20px;
+}
+.page-item.active .page-link {
+    background-color: #29ab98;
+}
+.modal-content {
+  background: linear-gradient(200deg, #43b58e, #3937bf 130%);
+  box-shadow: 10px 10px 5px black;
+  border-radius: 0;
+}
+.modal-title {
+    margin-left: auto;
+    color: white;
+}
+.modal-footer {
+    justify-content: center;
+}
+
+
+/*change password*/
+.change-pw::before {
+    background: url(../image/mockup-863469_1920.jpg) no-repeat center center fixed;
+    -webkit-filter: blur(2px);
+    -moz-filter: blur(2px);
+    -o-filter: blur(2px);
+    -ms-filter: blur(2px);
+    filter: blur(2px);
+}
+.change-pw.card {
+    border: none;
+    border-radius: 0px;
+    background: linear-gradient(200deg, #43b58e, #3937bf 130%);
+    top: 10%;
+    box-shadow: 10px 10px 10px #2a2529;
+}
+.dropdown-item:hover, .dropdown-item:focus {
+  color: #fff;
+  background: linear-gradient(200deg, #43b58e, #3937bf 130%);
+}
+.confirm-delete {
+    background-color: #0b628a;
+    width: 100%;
+}

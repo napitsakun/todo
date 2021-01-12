@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} {{ request.user.username|upper }} | Profile {% endblock %}
+
+{% block body-class %} change-pw {% endblock %}
+
+{% block content %}
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-10 mx-auto">
+				<p style="color: aliceblue;">username: {{ object }}</p>
+				<p style="color: aliceblue;">fname: {{ object.first_name }}</p>
+				<p style="color: aliceblue;">lname: {{ object.last_name }}</p>
+				<p style="color: aliceblue;">email: {{ object.email }}</p>
+				<p style="color: aliceblue;">dob: {{ detail.date_of_birth }}</p>
+
+				<div class="button-profile">
+					<a href="{% url 'edit_profile' object.id %}" style="text-decoration: none; color: black;"><button type="button" class="btn btn-primary">Change My Details</button></a>
+					<a href="{% url 'change_password' %}" style="text-decoration: none; color: black;"><button type="button" class="btn btn-primary">Change Password</button></a>
+					<a href="{% url 'deactivate' object.id %}" style="text-decoration: none; color: black;"><button type="button" class="btn btn-danger">Delete My Profile</button></a>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}

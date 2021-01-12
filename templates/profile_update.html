@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block body-class %} confirm-delete {% endblock %}
+
+{% block content %}
+<div class="container">
+	<div class="row">
+		<div class="col-md-6 mx-auto">
+			<div class="card change-pw">
+				<div class="card-body">
+					<div class="card-title">
+						<h4>Change Profile Detail</h4>
+					</div>
+					<div class="card-text">
+						<form method="POST" action="" class="form-change-pw">
+							{% csrf_token %}
+							{{ form.errors }}
+							{% for field in form.visible_fields %}
+								<label>{{ field.label|title }}</label>
+								{{ field }}
+							{% endfor %}
+							{{ dob }}
+							<div class="button">
+								<button type="submit" class="btn btn-primary">Update</button>
+								<a href="{% url 'profile' object.id %}"><button type="button" class="btn btn-primary">Cancel</button></a>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock %}
